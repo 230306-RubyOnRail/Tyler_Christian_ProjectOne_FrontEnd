@@ -1,2 +1,10 @@
 import React from 'react'
-//this is a page for the "Employee" thing;
+import { Navbar } from './Navbar'
+export function Employee() {
+    return (
+        <div>
+            <Navbar />
+            <h1>Employee</h1>
+        </div>
+    )
+}

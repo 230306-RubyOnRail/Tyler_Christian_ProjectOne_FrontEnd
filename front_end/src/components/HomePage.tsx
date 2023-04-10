@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export function HomeLanding() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  //const history = useHistory();
+ 
+//   const routeChange = (path :string) =>{
+//     let path1 = `/`+path;
+//     window.location.href=path1;
+//   };
+    let navigate = useNavigate(); 
+    // const routeChange = (path :string) =>{     
+    // navigate(path);
+    
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
   };
@@ -31,8 +42,14 @@ export function HomeLanding() {
         else {return response.json();}
     })
       .then(data => {
-        const token = data.token;
-        setToken(token);
+        const {token, tokentype} = data;
+        console.log(token, tokentype);
+        setToken(cur_token => token);
+        if (tokentype === "Management")
+        {navigate("/Management")}
+        else if (tokentype === "Employee")
+        {navigate("/Employee")}
+        else {console.log("No type")}
         // Extract the token from the response data
         // Use the token to authenticate requests to your Rails API
       })
@@ -40,9 +57,7 @@ export function HomeLanding() {
         console.error('Error:', error);
       });
   };
-
-  console.log(token);
-
+  console.log(token)
   return (
     <main>
       <h3>WELCOME</h3>
@@ -60,3 +75,4 @@ export function HomeLanding() {
     </main>
   );
 }
+
