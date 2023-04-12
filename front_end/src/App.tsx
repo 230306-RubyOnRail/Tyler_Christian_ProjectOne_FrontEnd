@@ -23,8 +23,14 @@ function App() {
       <Routes>
       {localStorage.getItem('token') != "NULL" ? (
         <Navbar />
-      ) : (
-        <>  </>
+        
+      ) 
+      
+      : (
+        <> 
+        
+         </>
+         
       )}
         <Route path = '/' element={<HomeLanding/>}/>
         <Route path = '/Employee' element={<Employee/>}/>
