@@ -1,12 +1,20 @@
 import React from "react";
 
+function getReimbToTable(usrIN:JSON)
+{
+  
+}
+
 export function ViewReimbursements() {
+  let arrayThing: Array<JSON>;
   fetch('http://localhost:3000/reimbursement-manager/1', {
     method: 'GET'
   })
     .then(response => response.json())
     .then(data => {
-      console.log("VIEW REIMBURSEMENTS:", JSON.stringify(data));
+      arrayThing = data.reimbursements;
+      arrayThing.forEach(e=>{console.log("TEST" + JSON.stringify(e))});
+      
     })
     .catch(error => {
       console.error('error', error);
