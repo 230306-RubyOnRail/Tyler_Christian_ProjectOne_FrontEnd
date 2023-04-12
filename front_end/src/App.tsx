@@ -8,10 +8,14 @@ import { Manager } from './components/Manager';
 import { ViewReimbursements } from './components/ViewReimbursements';
 import { CreateEmployee } from './components/CreateEmployee';
 import { EditReimbursement } from './components/EditReimbursement';
+import { Navbar } from './components/Navbar';
+import {User} from './models/users'
+
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
   return (
     <div className="App">
+      
       <BrowserRouter>
       <Routes>
         <Route path = '/' element={<HomeLanding/>}/>
@@ -23,7 +27,6 @@ function App() {
       </Routes>
       </BrowserRouter>
     </div>
-    
   );
 }
 

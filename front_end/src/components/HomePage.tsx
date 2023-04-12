@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import {User} from '../models/users'
 export function HomeLanding() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
