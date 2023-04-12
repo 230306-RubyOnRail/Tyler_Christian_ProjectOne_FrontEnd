@@ -5,7 +5,7 @@ import { HomeLanding } from './components/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Employee } from './components/Employee';
 import { Manager } from './components/Manager';
-
+import { ViewReimbursements } from './components/ViewReimbursements';
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path = '/' element={<HomeLanding/>}/>
         <Route path = '/Employee' element={<Employee/>}/>
         <Route path = '/Management' element={<Manager/>}/>
+        <Route path = '/view-reimbursements' element = {<ViewReimbursements/>}/>
       </Routes>
       </BrowserRouter>
     </div>
