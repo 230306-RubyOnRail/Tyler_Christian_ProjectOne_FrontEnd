@@ -5,11 +5,11 @@ type NavbarProps = {
   userrole: string;
 }
 
-export function Navbar({ userrole }: NavbarProps) {
+export function Navbar() {
   return (
     <nav style={{ display: 'flex', flexDirection: 'row' }}>
       <ul style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', margin: 0, padding: 0 }}>
-        {userrole === "Employee" ? (
+        {localStorage.getItem('tokentype') == "Management" ? (
           <li style={{ margin: '0 10px' }}><Link to="/submit-reimbursement">Submit a Reimbursement</Link></li>
         ) : (
           <li style={{ margin: '0 10px' }}><Link to="/add-user">Add a New User</Link></li>

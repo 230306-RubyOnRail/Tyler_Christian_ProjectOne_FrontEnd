@@ -13,11 +13,19 @@ import {User} from './models/users'
 
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
-  return (
+  localStorage.setItem('token', "NULL");
+  localStorage.setItem('tokentype', "NULL");
+  localStorage.setItem('user_id', "0");
+  return(
     <div className="App">
       
       <BrowserRouter>
       <Routes>
+      {localStorage.getItem('token') != "NULL" ? (
+        <Navbar />
+      ) : (
+        <>  </>
+      )}
         <Route path = '/' element={<HomeLanding/>}/>
         <Route path = '/Employee' element={<Employee/>}/>
         <Route path = '/Management' element={<Manager/>}/>
@@ -27,8 +35,8 @@ function App() {
       </Routes>
       </BrowserRouter>
     </div>
-  );
-}
+  );}
+
 
 export default App;
 

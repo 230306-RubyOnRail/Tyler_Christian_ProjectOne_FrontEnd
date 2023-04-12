@@ -24,7 +24,7 @@ export function HomeLanding() {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
-
+  
   const handleLoginClick = () => {
     fetch('http://localhost:3000/login', {
       method: 'POST',
@@ -42,9 +42,12 @@ export function HomeLanding() {
         else {return response.json();}
     })
       .then(data => {
-        const {token, tokentype} = data;
+        const {token, tokentype, user_id} = data;
         console.log(token, tokentype);
         setToken(cur_token => token);
+        localStorage.setItem('token', token);
+        localStorage.setItem('tokentype', tokentype);
+        localStorage.setItem('user_id', user_id);
         if (tokentype === "Management")
         {navigate("/Management")}
         else if (tokentype === "Employee")

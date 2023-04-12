@@ -4,7 +4,7 @@ export function Employee() {
     const userrole = 'Employee';
     return (
         <div>
-            <Navbar userrole={userrole} />
+            <Navbar />
             <h1>Employee</h1>
         </div>
     )
