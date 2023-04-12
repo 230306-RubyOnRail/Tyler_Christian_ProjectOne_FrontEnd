@@ -1,39 +1,46 @@
-
 import React from "react";
 import { Link } from 'react-router-dom';
 
-export  function Navbar() {
+type NavbarProps = {
+  userrole: string;
+}
+
+export function Navbar({ userrole }: NavbarProps) {
   return (
-    <nav>
-      <ul>
-        {/* {userrole === "Employee" ? (
-          <li><Link to="SubmitReimbursement">Submit a Reimbursement</Link></li>
+    <nav style={{ display: 'flex', flexDirection: 'row' }}>
+      <ul style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', margin: 0, padding: 0 }}>
+        {userrole === "Employee" ? (
+          <li style={{ margin: '0 10px' }}><Link to="/submit-reimbursement">Submit a Reimbursement</Link></li>
         ) : (
-          <li><Link to="AddUser">Add a New User</Link></li>
-        )} */}
-        <li><Link to="ViewReimbursements">View Reimbursements</Link></li>
-        <li><Link to="UpdateReimbursement">Update or Delete a Reimbursement</Link></li>
+          <li style={{ margin: '0 10px' }}><Link to="/add-user">Add a New User</Link></li>
+        )}
+        <li style={{ margin: '0 10px' }}><Link to="/view-reimbursements">View Reimbursements</Link></li>
+        <li style={{ margin: '0 10px' }}><Link to="/update-reimbursement">Update or Delete a Reimbursement</Link></li>
       </ul>
     </nav>
   );
 }
 
-
-
+// this works 
 // import React from "react";
 // import { Link } from 'react-router-dom';
 
+// type NavbarProps = {
+//   userrole: string;
+// }
 
-// export  function Navbar() {
-//     return (
-//         <nav>
-//             <ul>
-//                 {userrole === "Employee" ? (
-//                     <li><Link to="SubmitReimbursement">Submit a Reimbursement</Link> </li>
-//                 ) : (<li><Link to="AddUser">Add a New User</Link></li>)}
-//                 <li><Link to="ViewReimbursements">View Reimbursements</Link> </li>
-//                 <li><Link to="UpdateReimbursement">Update or Delete a Reimbursement</Link> </li>
-//             </ul>
-//         </nav>
-//     )
+// export function Navbar({ userrole }: NavbarProps) {
+//   return (
+//     <nav>
+//       <ul>
+//         {userrole === "Employee" ? (
+//           <li><Link to="/submit-reimbursement">Submit a Reimbursement</Link></li>
+//         ) : (
+//           <li><Link to="/add-user">Add a New User</Link></li>
+//         )}
+//         <li><Link to="/view-reimbursements">View Reimbursements</Link></li>
+//         <li><Link to="/update-reimbursement">Update or Delete a Reimbursement</Link></li>
+//       </ul>
+//     </nav>
+//   );
 // }
