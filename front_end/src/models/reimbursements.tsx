@@ -1,4 +1,4 @@
-export class User {
+export class Reimbursement {
     reimbursement_id: number;
     user_id: number;
     descr: string;
