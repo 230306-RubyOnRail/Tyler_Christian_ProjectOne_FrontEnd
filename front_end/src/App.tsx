@@ -21,17 +21,16 @@ function App() {
     <div className="App">
       
       <BrowserRouter>
-      {localStorage.getItem('token') != "NULL" ? (
+      {/* {localStorage.getItem('token') != "NULL" ? (
         <> 
           <Navbar />
          </>
-      ) 
-      
-      : (
+      ) : (
         
         <> 
         </>
-      )}
+      )} */}
+      <Navbar />
       <Routes>
       
         <Route path = '/' element={<HomeLanding/>}/>

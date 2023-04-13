@@ -52,6 +52,7 @@ export function HomeLanding() {
         setToken(cur_token => token);
         localStorage.setItem('token', token);
         localStorage.setItem('tokentype', tokentype);
+        window.dispatchEvent(new Event("StorageChange"));
         localStorage.setItem('user_id', user_id);
         if (tokentype === "Management")
         {navigate("/Management")}
