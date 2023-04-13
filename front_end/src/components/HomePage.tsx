@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import {User} from '../models/users'
 export function HomeLanding() {
+  localStorage.setItem('token', "NULL");
+  localStorage.setItem('tokentype', "NULL");
+  localStorage.setItem('user_id', "0");
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  localStorage.setItem('UsrLogin','false');
   //const history = useHistory();
  
 //   const routeChange = (path :string) =>{

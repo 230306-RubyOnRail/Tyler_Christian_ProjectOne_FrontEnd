@@ -13,10 +13,10 @@ import {User} from './models/users'
 
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
-  // localStorage.setItem('token', "NULL");
-  // localStorage.setItem('tokentype', "NULL");
-  // localStorage.setItem('user_id', "0");
-
+  //localStorage.setItem('token', "NULL");
+  //localStorage.setItem('tokentype', "NULL");
+  //localStorage.setItem('user_id', "0");
+  //localStorage.setItem('UsrLogin',0);
   return(
     <div className="App">
       
