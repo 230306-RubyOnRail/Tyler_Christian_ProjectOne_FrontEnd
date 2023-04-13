@@ -26,13 +26,14 @@ export function HomeLanding() {
   };
   
   const handleLoginClick = () => {
+    console.log("HANDLE LOGIN CLICK USERNAME "+ username + "password: " + password);
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: username,
+        user_name: username,
         user_password: password
       })
     })

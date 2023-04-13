@@ -2,6 +2,6 @@ import React from 'react'
 
 export function EditReimbursement() {
     return(<div>
-        <h1>EditREimbursement</h1>
+        <h1>EditReimbursement</h1>
     </div>);
 }

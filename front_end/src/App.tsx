@@ -13,35 +13,42 @@ import {User} from './models/users'
 
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
-  localStorage.setItem('token', "NULL");
-  localStorage.setItem('tokentype', "NULL");
-  localStorage.setItem('user_id', "0");
+  // localStorage.setItem('token', "NULL");
+  // localStorage.setItem('tokentype', "NULL");
+  // localStorage.setItem('user_id', "0");
+
   return(
     <div className="App">
       
       <BrowserRouter>
-      <Routes>
       {localStorage.getItem('token') != "NULL" ? (
-        <Navbar />
-        
+        <> 
+          <Navbar />
+         </>
       ) 
       
       : (
-        <> 
         
-         </>
-         
+        <> 
+        </>
       )}
+      <Routes>
+      
         <Route path = '/' element={<HomeLanding/>}/>
         <Route path = '/Employee' element={<Employee/>}/>
         <Route path = '/Management' element={<Manager/>}/>
         <Route path = '/view-reimbursements' element = {<ViewReimbursements/>}/>
-        <Route path = '/edit_Reimbursments' element={<EditReimbursement/>}/>
-        <Route path = '/CreateEmployee' element={<CreateEmployee/>}/>
+        <Route path = '/update-reimbursement' element={<EditReimbursement/>}/>
+        <Route path = '/add-user' element={<CreateEmployee/>}/>
       </Routes>
       </BrowserRouter>
     </div>
-  );}
+  );
+  // if()
+  // {
+
+  // };
+}
 
 
 export default App;
@@ -63,3 +70,31 @@ export default App;
 //     </BrowserRouter>
 //   );
 // }
+
+// return(
+//   <div className="App">
+    
+//     <BrowserRouter>
+//     <Routes>
+//     {localStorage.getItem('token') != "NULL" ? (
+//       <> 
+//         <Navbar />
+//        </>
+//     ) 
+    
+//     : (
+      
+//       <> 
+      
+//       </>
+//     )}
+//       <Route path = '/' element={<HomeLanding/>}/>
+//       <Route path = '/Employee' element={<Employee/>}/>
+//       <Route path = '/Management' element={<Manager/>}/>
+//       <Route path = '/view-reimbursements' element = {<ViewReimbursements/>}/>
+//       <Route path = '/edit_Reimbursments' element={<EditReimbursement/>}/>
+//       <Route path = '/CreateEmployee' element={<CreateEmployee/>}/>
+//     </Routes>
+//     </BrowserRouter>
+//   </div>
+// );
