@@ -10,6 +10,10 @@ import { CreateEmployee } from './components/CreateEmployee';
 import { EditReimbursement } from './components/EditReimbursement';
 import { Navbar } from './components/Navbar';
 import {User} from './models/users'
+import { AddUser } from './components/AddUser';
+import { UpdateReimbursement } from './components/UpdateReimbursement';
+import { SubmitReimbursement } from './components/SubmitReimbursement';
+
 
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
@@ -38,8 +42,9 @@ function App() {
         <Route path = '/Employee' element={<Employee/>}/>
         <Route path = '/Management' element={<Manager/>}/>
         <Route path = '/view-reimbursements' element = {<ViewReimbursements/>}/>
-        <Route path = '/update-reimbursement' element={<EditReimbursement/>}/>
-        <Route path = '/add-user' element={<CreateEmployee/>}/>
+        <Route path = '/add-user' element={<AddUser />}/>
+        <Route path = '/update-reimbursement/:id' element={<UpdateReimbursement/>}/>
+        <Route path = '/submit-reimbursement' element={<SubmitReimbursement/>}/>
       </Routes>
       </BrowserRouter>
     </div>

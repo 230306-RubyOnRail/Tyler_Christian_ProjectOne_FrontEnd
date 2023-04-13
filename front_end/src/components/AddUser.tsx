@@ -28,7 +28,7 @@ export function AddUser() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: username,
+                user_name: username,
                 user_password: password,
                 user_type: userType
             })

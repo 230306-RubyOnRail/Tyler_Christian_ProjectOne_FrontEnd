@@ -32,7 +32,6 @@ export function SubmitReimbursement() {
   return (
     <div>
       <h1>Submit Reimbursement</h1>
-      <Navbar />
       <input type="text" placeholder="Enter Reimbursement Amount:" onChange={handleReimbursementChange} />
       <input type="text" placeholder="Enter Reimbursement Reason:" onChange={handleReimbursementReasonChange} />
       <button onClick={handleAddUserClick}>Submit Reimbursement</button>
