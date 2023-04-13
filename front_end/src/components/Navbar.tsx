@@ -16,9 +16,32 @@ export function Navbar() {
         ) : (
           <li style={{ margin: '0 10px' }}><Link to="/add-user">Add a New User</Link></li>
         )}
-        <li style={{ margin: '0 10px' }}><Link to="/view-reimbursements">View Reimbursements</Link></li>
+
+
+        {localStorage.getItem('tokentype') !== "Management" ? (
+          <li style={{ margin: '0 10px' }}><Link to='/view-reimbursements-employee'>View Reimbursements</Link></li>
+        ) : (
+          <li style={{ margin: '0 10px' }}><Link to="/view-reimbursements">View Reimbursements</Link></li>
+        )}
+
+
+        {localStorage.getItem('tokentype') !== "Management" ? (
+          <li style={{ margin: '0 10px' }}><Link to="/update-reimbursement-employee">Update a Reimbursement</Link></li>
+        ) : (
+          <li style={{ margin: '0 10px' }}><Link to="/update-reimbursement">Update a Reimbursement</Link></li>
+        )}
+
+        {localStorage.getItem('tokentype') !== "Management" ? (
+          <li style={{ margin: '0 10px' }}>
+            <Link to="/delete-reimbursement">Delete a Reimbursement</Link>
+          </li>
+        ) : null}
+
+
+{/* 
+
         <li style={{ margin: '0 10px' }}><Link to="/update-reimbursement">Update or Delete a Reimbursement</Link></li>
-        <button onClick={testForThings}>TEST </button>
+        <button onClick={testForThings}>TEST </button> */}
       </ul>
     </nav>
   );

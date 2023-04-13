@@ -45,10 +45,12 @@ function ReimbursementTable(props: Props) {
   );
 }
 
-export function ViewReimbursements() {
+export function ViewReimbursementsEmployee() {
   const [reimbursements, setReimbursements] = useState<Reimbursement[]>([]);
+  const user_id = localStorage.getItem('user_id');
+  console.log(user_id)
   useEffect(() => {
-    fetch("http://localhost:3000/reimbursement-manager/1")
+    fetch("http://localhost:3000/reimbursement/" + user_id)
       .then((response) => response.json())
       .then((data) => {
         console.log("VIEW REIMBURSEMENTS:", JSON.stringify(data));

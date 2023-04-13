@@ -16,15 +16,16 @@ export function SubmitReimbursement() {
   };
 
   const handleAddUserClick = () => {
-    fetch('http://localhost:3000/reimbursement_lists', {
+    fetch('http://localhost:3000/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        user_id: user_id,
+        descr: reimbursementDescription,
         amount: reimbursementAmount,
-        description: reimbursementDescription,
-        user_id: user_id
+        date_submitted: new Date()
       })
     })
   };

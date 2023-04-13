@@ -7,6 +7,7 @@ export function UpdateReimbursement() {
     const [reimbursementAmount, setReimbursementAmount] = useState('');
     const [error, setError] = useState('');
     const tokentype = localStorage.getItem('tokentype');
+    const [status, setStatus] = useState('');
 
     const  handleReimbursementChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setReimbursementAmount(event.target.value);
@@ -15,16 +16,26 @@ export function UpdateReimbursement() {
     const handleReimbursementIDChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setReimbursementID(event.target.value);
     };
+    const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const status = event.target.value.toLowerCase();
+        if (status === "pending" || status === "approved" || status === "denied" || status === "seen") {
+            setStatus(status);
+            setError("");
+        } else {
+            setError("Status must be 'pending', 'approved', or 'denied'");
+        }
+    };
     
-    const handleAddUserClick = () => {
-        fetch('http://localhost:3000/reimbursement_lists/:id', {
+    const handleChangeReimbursementClick = () => {
+        
+        fetch('http://localhost:3000/reimbursements/' + reimbursementID, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 amount: reimbursementAmount,
-                reimbursement_id: reimbursementID,
+                status
             })
         })
             .then(response => {
@@ -43,11 +54,11 @@ export function UpdateReimbursement() {
 
     return(<div>
         <h1>Update a Reimbursement</h1>
-        <Navbar />
         <input type="text" placeholder="Enter Reimbursement Number:" onChange={handleReimbursementIDChange} />
-        <input type="text" placeholder="Enter New Reimbursement Amount" onChange={handleReimbursementChange} />
+        <input type="text" placeholder="Enter New Amount" onChange={handleReimbursementChange} />
+        <input type="text" placeholder="Enter New Status" onChange={handleStatusChange} />
         {error && <p>{error}</p>}
-        <button onClick={handleAddUserClick}>ADD USER</button>
+        <button onClick={handleChangeReimbursementClick}>Update Reimbursement</button>
     </div>);
 }
 

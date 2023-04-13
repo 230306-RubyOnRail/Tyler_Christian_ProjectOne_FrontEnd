@@ -6,13 +6,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Employee } from './components/Employee';
 import { Manager } from './components/Manager';
 import { ViewReimbursements } from './components/ViewReimbursements';
-import { CreateEmployee } from './components/CreateEmployee';
-import { EditReimbursement } from './components/EditReimbursement';
 import { Navbar } from './components/Navbar';
 import {User} from './models/users'
 import { AddUser } from './components/AddUser';
 import { UpdateReimbursement } from './components/UpdateReimbursement';
 import { SubmitReimbursement } from './components/SubmitReimbursement';
+import { ViewReimbursementsEmployee } from './components/ViewReimbursementsEmployee';
+import { UpdateReimbursementEmployee } from './components/UpdateReimbursementEmployee';
+import { DeleteReimbursement } from './components/DeleteReimbursement';
 
 
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
@@ -43,8 +44,11 @@ function App() {
         <Route path = '/Management' element={<Manager/>}/>
         <Route path = '/view-reimbursements' element = {<ViewReimbursements/>}/>
         <Route path = '/add-user' element={<AddUser />}/>
-        <Route path = '/update-reimbursement/:id' element={<UpdateReimbursement/>}/>
+        <Route path = '/update-reimbursement/' element={<UpdateReimbursement/>}/>
         <Route path = '/submit-reimbursement' element={<SubmitReimbursement/>}/>
+        <Route path = '/view-reimbursements-employee' element={<ViewReimbursementsEmployee/>}/>
+        <Route path = '/update-reimbursement-employee' element={<UpdateReimbursementEmployee/>}/>
+        <Route path = '/delete-reimbursement' element={<DeleteReimbursement/>}/>
       </Routes>
       </BrowserRouter>
     </div>
