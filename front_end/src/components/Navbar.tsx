@@ -15,7 +15,7 @@ export function Navbar() {
     console.log("isLoggedIn = "+isLoggedIn+"-------");
   }
   
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
 
   useEffect(() => {
       const handleStoreChange =()=>{
