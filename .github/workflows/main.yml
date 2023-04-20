@@ -5,8 +5,7 @@ on:
     branches:
       - main
       - ChristianBranch2
-      - christianbranch2
-
+      
 env:
   S3_BUCKET: ror-crl-revature
   AWS_REGION: us-east-2
