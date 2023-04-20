@@ -1,58 +1,66 @@
-// I CANNOT ADD A USER SO IM NOT SURE IF THIS WORKS, PLEASE REVISE IT BEFORE TOMORROW
-
-import React, { useState } from 'react'
-
+import React from 'react'
+import {useState} from 'react'
 export function AddUser() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState('');
-    const [error, setError] = useState('');
-
-    const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setUsername(event.target.value);
-    };
-    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-    };
-    const handleUserTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const userType = event.target.value.toLowerCase();
-        if (userType === "employee" || userType === "management") {
-          setUserType(userType);
-          setError("");
-        } else {
-          setError("User type must be 'employee' or 'management'");
-        }
-    };
-    const handleAddUserClick = () => {
-        fetch('http://localhost:3000/users_create', {
-            method: 'POST',
+    const [eUsrName, set_eUsrName] = useState('');
+    const [eUsrPassword, set_eUsrPassword] = useState('');
+    const [eUsrType, set_eUserType] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const handleAccountMaker = () =>{
+        console.log("handleReimbursements!!!");
+        fetch('http://ec2-3-132-179-108.us-east-2.compute.amazonaws.com:3000/users_create/',
+        {
+            method:'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                user_name: username,
-                user_password: password,
-                user_type: userType
+                user_name: eUsrName,
+                user_type: eUsrType,
+                user_password: eUsrPassword
             })
+        }).then(response=>{
+            if(!response.ok){setErrorMessage("Could not create user: Check that userid is unique and password length is 6 characters min");}
+            else{setErrorMessage("User Successfully Created");}
         })
-            .then(response => {
-                if (!response.ok) {
-                    console.log("Error");
-                }
-                else {
-                    console.log("Success");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
     };
+
+    const handleChange_eUsrName = (event:any) => {
+        set_eUsrName(event.target.value);
+    }
+    const handleChange_eUsrPassword=(event:any)=>{
+        set_eUsrPassword(event.target.value);
+    }
+    const handleChange_eUserType=(event:any)=>{
+        const eUsrType = event.target.value.toLowerCase();
+        const usrType = eUsrType.charAt(0).toUpperCase() + eUsrType.slice(1);
+        if (usrType === "Employee" || usrType === "Management") {
+            set_eUserType(usrType);
+            setErrorMessage("");
+            } else {
+            setErrorMessage("User type must be 'Employee' or 'Management'");
+            }
+
+    }
+   
+
+
+
     return(<div>
         <h1>CREATE EMPLOYEE</h1>
-        <input type="text" placeholder="Username" onChange={handleUsernameChange} />
-        <input type="password" placeholder="Password" onChange={handlePasswordChange} />
-        <input type="text" placeholder="User Type" onChange={handleUserTypeChange} />
-        {error && <p>{error}</p>}
-        <button onClick={handleAddUserClick}>ADD USER</button>
+        <div>
+            <label>User_Name: </label>
+            <input type = "text" name= "User_Name" required value = {eUsrName} onChange={handleChange_eUsrName}/>
+            <br />
+            <label>User_Password</label>
+            <input type="text" name="User_Password" onChange={handleChange_eUsrPassword}/>
+            <br />
+            <label>User_Type</label>
+            <input type = "text" min="0.01" step="0.01" name = "User_Type"onChange={handleChange_eUserType}/>
+            <br />
+            <button onClick={handleAccountMaker}>Add User</button>
+        </div>
+        <div>
+            {errorMessage}
+        </div>
     </div>);
 }

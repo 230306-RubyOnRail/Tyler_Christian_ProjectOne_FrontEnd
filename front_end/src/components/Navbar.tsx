@@ -1,14 +1,37 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 type NavbarProps = {
   userrole: string;
 }
+
 function testForThings(){
   console.log("Token Type = "+localStorage.getItem('tokentype')+"-------");
 }
+
+
 export function Navbar() {
+  const token = localStorage.getItem('token');
+
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('tokentype'));
+  
+  useEffect(() => {
+    const handleStoreChange =()=>{
+      setLoggedIn(localStorage.getItem('tokentype'));
+    }
+  // setTimeout(() => {
+    window.addEventListener('StorageChange',handleStoreChange);
+  //   setCount((count) => count + 1);
+  // }, 100);
+  return () => window.removeEventListener('StorageChange',handleStoreChange);
+},[]);
+  if (!token) {
+  return null;
+  }
   return (
+
     <nav style={{ display: 'flex', flexDirection: 'row'}}>
       <ul style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', margin: 0, padding: 0 , border:'2px solid black' }}>
         {localStorage.getItem('tokentype') !== "Management" ? (
@@ -33,40 +56,13 @@ export function Navbar() {
 
         {localStorage.getItem('tokentype') !== "Management" ? (
           <li style={{ margin: '0 10px' }}>
-            <Link to="/delete-reimbursement">Delete a Reimbursement</Link>
+            <Link to="/delete-reimbursement-employee">Delete a Reimbursement</Link>
           </li>
-        ) : null}
-
-
-{/* 
-
-        <li style={{ margin: '0 10px' }}><Link to="/update-reimbursement">Update or Delete a Reimbursement</Link></li>
-        <button onClick={testForThings}>TEST </button> */}
+        ) : <li style={{ margin: '0 10px' }}>
+        <Link to="/delete-reimbursement">Delete a Reimbursement</Link>
+      </li>}
       </ul>
     </nav>
   );
 }
 
-// this works 
-// import React from "react";
-// import { Link } from 'react-router-dom';
-
-// type NavbarProps = {
-//   userrole: string;
-// }
-
-// export function Navbar({ userrole }: NavbarProps) {
-//   return (
-//     <nav>
-//       <ul>
-//         {userrole === "Employee" ? (
-//           <li><Link to="/submit-reimbursement">Submit a Reimbursement</Link></li>
-//         ) : (
-//           <li><Link to="/add-user">Add a New User</Link></li>
-//         )}
-//         <li><Link to="/view-reimbursements">View Reimbursements</Link></li>
-//         <li><Link to="/update-reimbursement">Update or Delete a Reimbursement</Link></li>
-//       </ul>
-//     </nav>
-//   );
-// }

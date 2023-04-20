@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {Navbar} from './Navbar';
+import { Navbar } from "./Navbar";
+import './styles/ViewReimbursements.css'
+
 type Reimbursement = {
   reimbursement_id: number;
   user_id: number;
@@ -28,6 +30,7 @@ function ReimbursementTable(props: Props) {
           <th>ID</th>
           <th>Amount</th>
           <th>Description</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -48,7 +51,7 @@ function ReimbursementTable(props: Props) {
 export function ViewReimbursements() {
   const [reimbursements, setReimbursements] = useState<Reimbursement[]>([]);
   useEffect(() => {
-    fetch("http://localhost:3000/reimbursement-manager/1")
+    fetch("http://ec2-3-132-179-108.us-east-2.compute.amazonaws.com:3000/reimbursement-manager/1")
       .then((response) => response.json())
       .then((data) => {
         console.log("VIEW REIMBURSEMENTS:", JSON.stringify(data));

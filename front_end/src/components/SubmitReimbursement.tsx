@@ -16,7 +16,7 @@ export function SubmitReimbursement() {
   };
 
   const handleAddUserClick = () => {
-    fetch('http://localhost:3000/submit', {
+    fetch('http://ec2-3-132-179-108.us-east-2.compute.amazonaws.com:3000/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

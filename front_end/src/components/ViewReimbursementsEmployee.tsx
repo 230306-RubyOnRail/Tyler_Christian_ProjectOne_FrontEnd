@@ -28,6 +28,7 @@ function ReimbursementTable(props: Props) {
           <th>ID</th>
           <th>Amount</th>
           <th>Description</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +38,7 @@ function ReimbursementTable(props: Props) {
             <td>{reimbursement.amount}</td>
             <td>{reimbursement.descr}</td>
             <td>{reimbursement.status}</td>
-            <td>{reimbursement.date_approved}</td>
+            
           </tr>
         ))}
       </tbody>
@@ -50,7 +51,7 @@ export function ViewReimbursementsEmployee() {
   const user_id = localStorage.getItem('user_id');
   console.log(user_id)
   useEffect(() => {
-    fetch("http://localhost:3000/reimbursement/" + user_id)
+    fetch("http://ec2-3-132-179-108.us-east-2.compute.amazonaws.com:3000/reimbursement/" + user_id)
       .then((response) => response.json())
       .then((data) => {
         console.log("VIEW REIMBURSEMENTS:", JSON.stringify(data));

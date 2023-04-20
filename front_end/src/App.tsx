@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -14,12 +17,12 @@ import { SubmitReimbursement } from './components/SubmitReimbursement';
 import { ViewReimbursementsEmployee } from './components/ViewReimbursementsEmployee';
 import { UpdateReimbursementEmployee } from './components/UpdateReimbursementEmployee';
 import { DeleteReimbursement } from './components/DeleteReimbursement';
-
+import { DeleteReimbursementEmployee } from './components/DeleteReimbursementsEmployee';
 
 //update = https://github.com/230306-RubyOnRail/Tyler_Christian_ProjectOne_FrontEnd
 function App() {
-  // localStorage.setItem('token', "NULL");
-  // localStorage.setItem('tokentype', "NULL");
+  // localStorage.getItem('token');
+  // localStorage.getItem('tokentype');
   // localStorage.setItem('user_id', "0");
 
   return(
@@ -31,7 +34,6 @@ function App() {
           <Navbar />
          </>
       ) 
-      
       : (
         
         <> 
@@ -49,14 +51,11 @@ function App() {
         <Route path = '/view-reimbursements-employee' element={<ViewReimbursementsEmployee/>}/>
         <Route path = '/update-reimbursement-employee' element={<UpdateReimbursementEmployee/>}/>
         <Route path = '/delete-reimbursement' element={<DeleteReimbursement/>}/>
+        <Route path = 'delete-reimbursement-employee' element={<DeleteReimbursementEmployee/>}/>
       </Routes>
       </BrowserRouter>
     </div>
   );
-  // if()
-  // {
-
-  // };
 }
 
 

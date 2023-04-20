@@ -1,0 +1,18 @@
+table {
+    margin: 0 auto; /* Center the table horizontally */
+  }
+  
+  th,
+  td {
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

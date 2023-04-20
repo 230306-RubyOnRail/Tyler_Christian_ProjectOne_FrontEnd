@@ -28,7 +28,7 @@ export function UpdateReimbursement() {
     
     const handleChangeReimbursementClick = () => {
         
-        fetch('http://localhost:3000/reimbursements/' + reimbursementID, {
+        fetch('http://ec2-3-132-179-108.us-east-2.compute.amazonaws.com:3000/reimbursements/' + reimbursementID, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
