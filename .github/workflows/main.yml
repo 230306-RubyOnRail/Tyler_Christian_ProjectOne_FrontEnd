@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - ChristianBranch2
 
 env:
   S3_BUCKET: ror-crl-revature
